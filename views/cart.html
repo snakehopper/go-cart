@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<p style="color:red;">{{.Msg}}</p>
+		<hr />
+		{{with .Cart}}
+			{{with .Items}}
+				{{range .}}
+					<p>Items:{{.Name}}</p>
+					<p>$ {{.Price}}</p>
+					<p><input name="qty" type="text" value="{{.Qty}}" /></p>
+						<form action="/cart/remove/{{.Id}}" method="get">  
+				  			<input type="submit" value="delete">
+						</form>
+					<hr />	
+				{{end}}
+			{{end}}
+		{{end}}
+		
+		<p>Total $ 25</p>
+	</body>
+</html>
